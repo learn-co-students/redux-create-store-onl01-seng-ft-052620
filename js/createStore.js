@@ -26,3 +26,21 @@ let button = document.getElementById('button');
 button.addEventListener('click', function() {
     dispatch({ type: 'INCREASE_COUNT' });
 })
+
+function createStore() {
+  let state;
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    render();
+  }
+
+  function getState() {
+    return state;
+  }
+
+  return {
+    dispatch,
+    getState
+  };
+};
